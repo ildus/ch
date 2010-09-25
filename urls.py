@@ -1,16 +1,23 @@
-from django.conf.urls.defaults import *
+#coding: utf-8
 
-# Uncomment the next two lines to enable the admin:
-# from django.contrib import admin
-# admin.autodiscover()
+from django.conf.urls.defaults import patterns, url, include
+from django.conf import settings
+
+from django.contrib import admin
+admin.autodiscover()
 
 urlpatterns = patterns('',
-    # Example:
-    # (r'^chtoru/', include('chtoru.foo.urls')),
+    
+    url(r'^i18n/', include('django.conf.urls.i18n')),
+    url(r'^$', 'core.views.index', name = 'index'),
+    url(r'^news/$', 'core.views.news', name = 'news'),
+    url(r'^news/([-\w]+)/$', 'core.views.news_item', name = 'news_item'),
 
-    # Uncomment the admin/doc line below to enable admin documentation:
-    # (r'^admin/doc/', include('django.contrib.admindocs.urls')),
-
-    # Uncomment the next line to enable the admin:
-    # (r'^admin/', include(admin.site.urls)),
+    (r'^admin/', include(admin.site.urls)),
 )
+
+if settings.LOCAL:
+    urlpatterns += patterns('',
+        (r'^media/(?P<path>.*)$', 'django.views.static.serve',
+            {'document_root': settings.MEDIA_ROOT}),
+    )

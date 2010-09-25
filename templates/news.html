@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	{% load i18n pages_tags %}
+	<title>China To Russia. {% firstof object.title "Российско-Китайское деловое сотрудничество." %} </title>
+	<link href="{{MEDIA_URL}}/css/style.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+	<script type="text/javascript" src="{{MEDIA_URL}}/js/main.js"> </script>
+</head>
+<body>
+	<div class="main">
+		<div class="slogan">
+			<a href="http://{{object.domain}}">ChToRu.com</a><br />
+			C h i n a&nbsp;&nbsp;&nbsp;t o&nbsp;&nbsp;&nbsp;R u s s i a<br />&nbsp;<br />
+			<a onclick="set_lang('ru');" class="lang"> ru <img src="{{MEDIA_URL}}/images/flag_ru.gif" width="16" height="11" alt="русский" />&nbsp;&nbsp;&nbsp; </a>
+			<a onclick="set_lang('cn');" class="lang"> cn <img src="{{MEDIA_URL}}/images/flag_cn.gif" width="16" height="11" alt="china" />&nbsp;&nbsp;&nbsp; </a>
+			<a onclick="set_lang('en');" class="lang"> en <img src="{{MEDIA_URL}}/images/flag_en.gif" width="16" height="11" alt="english" /> </a>
+		</div>
+
+
+		<div class="menu1">
+			<img src="{{MEDIA_URL}}images/spacer.gif" height="1" width="30" alt="" />
+			
+			{% for one in main_pages %}
+				{% if one = 'news' %}
+					{% if is_news %}
+						<span> {% trans "News" %} </span>
+					{% else %}
+						<a href="{% url news %}"> {% trans "News" %}</a>
+					{% endif %}
+				{% else %}
+					{% if object.alias = one.alias %}
+						<span> {% tr one "name" %} </span>
+					{% else %}
+						<a href="{% page_url one.alias %}"> {% tr one "name" %}</a>
+					{% endif %}
+				{% endif %}				
+			{% endfor %}
+		</div>
+
+
+
+		<div class="menu2"></div>
+		<div class="content">
+			<div class="left2">
+				<b class="news">Читайте также</b>
+				<ul>
+					<li><a href="#">O котором мы писали в самом начале. Возможно, это лишь кажется нам исходя из анализа</a></li>
+				</ul>
+            </div>
+			<div class="right">
+				<div class="news-list">
+					<h3>{% trans "News" %}</h3>
+                    <ul>
+                        {% news 20 %}
+                    </ul>          
+				</div>
+				<div class="service">
+					<h3>Услуги</h3>
+					<ul>
+
+						<li>&#8212; Поиск делового партнера в&nbsp;Китае.</li>
+						<li>&#8212; Подготовка визита российских представителей в&nbsp;Китай.</li>
+						<li>&#8212; Размещение заказов на&nbsp;китайских фабриках.</li>
+						<li>&#8212; Доставка груза из&nbsp;Китая.</li>
+
+						<li>&#8212; Помощь в&nbsp;таможенной очистке груза или полная таможенная очистка груза.</li>
+					</ul><p>&nbsp;</p>
+					<h3>Опыт</h3>
+					<ul>
+						<li>&#8212; Поставки товаров народного потребления из&nbsp;Китая (одежда, обувь).</li>
+
+						<li>&#8212; Поставки сложного электронного оборудования.</li>
+					</ul>				</div>
+			</div>					
+		</div>
+</div>
+	<div class="clear">
+		<img src="/images/spacer.gif" height="65" width="1" alt="" />
+	</div>
+
+	<div class="line">
+		<img src="/images/spacer.gif" width="1" height="1" alt="" />
+	</div>
+			<div class="footer1">
+			<div class="copy">	 <a href="/experience/" class="left1">experience</a><br />
+<!--LiveInternet counter--><script type="text/javascript"><!--
+document.write("<a href='http://www.liveinternet.ru/click' "+
+"target=_blank><img src='http://counter.yadro.ru/hit?t44.1;r"+
+escape(document.referrer)+((typeof(screen)=="undefined")?"":
+";s"+screen.width+"*"+screen.height+"*"+(screen.colorDepth?
+screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
+";"+Math.random()+
+"' alt='' title='LiveInternet' "+
+"border=0 width=31 height=31><\/a>")//--></script><!--/LiveInternet-->
+</div>
+
+			<div class="phone">
+				<div class="left"> {{ blocks.1|safe }}
+				</div>
+				<div class="adress"> {{ blocks.2|safe }}
+				</div>
+			</div>
+
+		</div><script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-8720790-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+</body>
+</html>
