@@ -23,15 +23,16 @@ class PageAdmin(BasePageAdmin, TreeEditor):
         (_('Options'), {
             'fields': ('alias', 'active', 'meta_redirect'),
         }),
+        ( _('Russian'), {
+            'fields':( ('name_ru', 'title_ru'), 'h1_ru', 'content_ru', 'right_ru', )
+        }),  
         ( _('English'), {
             'fields':( ('name', 'title'), 'h1', 'content', 'right')
         }),
         ( _('China'), {
             'fields':( ('name_cn', 'title_cn'), 'h1_cn', 'content_cn', 'right_cn')
         }),
-        ( _('Russian'), {
-            'fields':( ('name_ru', 'title_ru'), 'h1_ru', 'content_ru', 'right_ru', )
-        }),        
+              
         (_('Meta'), {
             'fields': ( 'meta_description','meta_keywords'),
         }),

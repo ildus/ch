@@ -4,9 +4,9 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	{% load i18n pages_tags %}
 	<title>China To Russia. {% firstof object.title "Российско-Китайское деловое сотрудничество." %} </title>
-	<link href="{{MEDIA_URL}}/css/style.css" rel="stylesheet" type="text/css" />
+	<link href="{{MEDIA_URL}}css/style.css" rel="stylesheet" type="text/css" />
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-	<script type="text/javascript" src="{{MEDIA_URL}}/js/main.js"> </script>
+	<script type="text/javascript" src="{{MEDIA_URL}}js/main.js"> </script>
 </head>
 	<body class="map">
 		<div>
@@ -18,10 +18,21 @@
 				<a onclick="set_lang('en');" class="lang"> en <img src="{{MEDIA_URL}}/images/flag_en.gif" width="16" height="11" alt="english" /> </a>
 			</div>
 			<div class="menu">
-				<a href="{% page_url "about" %}"> {% trans "About" %}</a>
-				<a href="{% page_url "services" %}"> {% trans "Services" %} </a>
-				<a href="{% url news %}"> {% trans "News" %}</a>
-				<a href="{% page_url "contacts" %}"> {% trans "Contacts" %}</a>
+				{% for one in main_pages %}
+				{% if one = 'news' %}
+					{% if is_news %}
+						{% trans "News" %}
+					{% else %}
+						<a href="{% url news %}"> {% trans "News" %}</a>
+					{% endif %}
+				{% else %}
+					{% if object.alias = one.alias %}
+						<span> {% tr one "name" %} </span>
+					{% else %}
+						<a href="{% page_url one.alias %}"> {% tr one "name" %}</a>
+					{% endif %}
+				{% endif %}				
+				{% endfor %}
 			</div>
 			<div class="content">
 				<div class="saint"> {% trans "St. Petersburg" %}</div>

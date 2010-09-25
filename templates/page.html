@@ -4,9 +4,9 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	{% load i18n pages_tags %}
 	<title>China To Russia. {% firstof object.title "Российско-Китайское деловое сотрудничество." %} </title>
-	<link href="{{MEDIA_URL}}/css/style.css" rel="stylesheet" type="text/css" />
+	<link href="{{MEDIA_URL}}css/style.css" rel="stylesheet" type="text/css" />
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-	<script type="text/javascript" src="{{MEDIA_URL}}/js/main.js"> </script>
+	<script type="text/javascript" src="{{MEDIA_URL}}js/main.js"> </script>
 </head>
 <body>
 	<div class="main">
@@ -19,7 +19,7 @@
 		</div>
 
 		<div class="menu1">
-			<img src="/images/spacer.gif" height="1" width="30" alt="" />
+			<img src="{{MEDIA_URL}}images/spacer.gif" height="1" width="30" alt="" />
 			
 			{% for one in main_pages %}
 				{% if one = 'news' %}
