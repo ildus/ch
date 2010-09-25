@@ -14,7 +14,7 @@
 				<a href="/">ChToRu.com</a><br />
 				C h i n a&nbsp;&nbsp;&nbsp;t o&nbsp;&nbsp;&nbsp;R u s s i a<br />&nbsp;<br />
 				<a onclick="set_lang('ru');" class="lang"> ru <img src="{{MEDIA_URL}}/images/flag_ru.gif" width="16" height="11" alt="русский" />&nbsp;&nbsp;&nbsp; </a>
-				<a onclick="set_lang('cn');" class="lang"> cn <img src="{{MEDIA_URL}}/images/flag_cn.gif" width="16" height="11" alt="china" />&nbsp;&nbsp;&nbsp; </a>
+				<a onclick="set_lang('zh');" class="lang"> cn <img src="{{MEDIA_URL}}/images/flag_cn.gif" width="16" height="11" alt="china" />&nbsp;&nbsp;&nbsp; </a>
 				<a onclick="set_lang('en');" class="lang"> en <img src="{{MEDIA_URL}}/images/flag_en.gif" width="16" height="11" alt="english" /> </a>
 			</div>
 			<div class="menu">
@@ -46,11 +46,11 @@
 				</ul>
   			</div>
 			<div class="footer">
-				<div class="copy">	{{blocks.0|safe}}</div>
+				<div class="copy">	{% tr copy 'text' %}</div>
 				<div class="phone">
-					<div class="left"> {{blocks.1|safe}}</div>
-					<div class="adress"> {{blocks.2|safe}} </div>
-				</div>		
+					<div class="left"> {% tr phone "text" %}</div>
+					<div class="adress"> {% tr address "text" %} </div>
+				</div>
 			</div>
 
 		</div>

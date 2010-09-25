@@ -1,0 +1,263 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-09-25 13:12+0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: settings.py:44 core/admin.py:26 core/admin.py:53
+msgid "Russian"
+msgstr ""
+
+#: settings.py:45 core/admin.py:29 core/admin.py:59
+msgid "English"
+msgstr ""
+
+#: settings.py:46 core/admin.py:32 core/admin.py:56
+msgid "China"
+msgstr ""
+
+#: core/admin.py:18
+msgid "is active"
+msgstr ""
+
+#: core/admin.py:23 core/admin.py:50
+msgid "Options"
+msgstr ""
+
+#: core/admin.py:36 core/admin.py:62
+msgid "Meta"
+msgstr ""
+
+#: core/admin.py:39
+msgid "Tree location"
+msgstr ""
+
+#: core/forms.py:15
+msgid "Description"
+msgstr ""
+
+#: core/forms.py:16 core/models.py:25
+msgid "meta tag \"description\""
+msgstr ""
+
+#: core/forms.py:17
+msgid "Keywords"
+msgstr ""
+
+#: core/forms.py:18 core/models.py:27
+msgid "meta tag \"keywords\""
+msgstr ""
+
+#: core/models.py:22
+msgid "alias"
+msgstr ""
+
+#: core/models.py:24 lib/models.py:13
+msgid "description"
+msgstr ""
+
+#: core/models.py:26
+msgid "keywords"
+msgstr ""
+
+#: core/models.py:28
+msgid "redirect"
+msgstr ""
+
+#: core/models.py:29
+msgid "http 302"
+msgstr ""
+
+#: core/models.py:30
+msgid "active"
+msgstr ""
+
+#: core/models.py:33
+msgid "indexed"
+msgstr ""
+
+#: core/models.py:38 core/models.py:39 core/models.py:40
+msgid "tag H1"
+msgstr ""
+
+#: core/models.py:43 core/models.py:45 core/models.py:47
+#: lib/extensions/tree_editor.py:179
+msgid "title"
+msgstr ""
+
+#: core/models.py:44 core/models.py:46 core/models.py:48
+msgid "tag \"title\""
+msgstr ""
+
+#: core/models.py:51
+msgid "name"
+msgstr ""
+
+#: core/models.py:52
+msgid "china name"
+msgstr ""
+
+#: core/models.py:53
+msgid "russian name"
+msgstr ""
+
+#: core/models.py:56
+msgid "english content"
+msgstr ""
+
+#: core/models.py:57
+msgid "china content"
+msgstr ""
+
+#: core/models.py:58
+msgid "russian content"
+msgstr ""
+
+#: core/models.py:61
+msgid "Right column"
+msgstr ""
+
+#: core/models.py:62
+msgid "Right column (ch)"
+msgstr ""
+
+#: core/models.py:63
+msgid "Right column (ru)"
+msgstr ""
+
+#: core/models.py:92
+msgid "page"
+msgstr ""
+
+#: core/models.py:93
+msgid "pages"
+msgstr ""
+
+#: core/models.py:97
+msgid "Creating date"
+msgstr ""
+
+#: core/models.py:100
+msgid "news Item"
+msgstr ""
+
+#: core/models.py:101
+msgid "news"
+msgstr ""
+
+#: core/models.py:127
+msgid "text"
+msgstr ""
+
+#: core/models.py:128
+msgid "texts"
+msgstr ""
+
+#: lib/admin.py:18 lib/models.py:12 lib/models.py:26
+msgid "image"
+msgstr ""
+
+#: lib/decorators.py:38
+msgid "Authorization required"
+msgstr ""
+
+#: lib/models.py:10
+msgid "filename"
+msgstr ""
+
+#: lib/models.py:11
+msgid "extension"
+msgstr ""
+
+#: lib/models.py:27
+msgid "images"
+msgstr ""
+
+#: lib/extensions/tree_editor.py:334
+msgid "Cut"
+msgstr ""
+
+#: lib/extensions/tree_editor.py:337
+msgid "Insert as child"
+msgstr ""
+
+#: lib/extensions/tree_editor.py:339
+msgid "Insert before"
+msgstr ""
+
+#: lib/extensions/tree_editor.py:345 lib/templates/admin/inline_table.html:43
+msgid "actions"
+msgstr ""
+
+#: lib/extensions/tree_editor.py:350
+msgid "add next item"
+msgstr ""
+
+#: lib/extensions/tree_editor.py:352
+msgid "add child item"
+msgstr ""
+
+#: lib/extensions/tree_editor.py:356
+msgid "adding"
+msgstr ""
+
+#: lib/templates/admin/inline_table.html:68
+msgid "No results"
+msgstr ""
+
+#: lib/templates/admin/inline_table.html:70
+msgid "No objects"
+msgstr ""
+
+#: lib/templates/admin/inline_table.html:90
+msgid "Add"
+msgstr ""
+
+#: lib/templates/admin/tree_editor.html:156
+msgid "Shortcuts"
+msgstr ""
+
+#: lib/templates/admin/tree_editor.html:158
+msgid "Collapse tree"
+msgstr ""
+
+#: lib/templates/admin/tree_editor.html:159
+msgid "Expand tree"
+msgstr ""
+
+#: lib/templates/admin/tree_editor.html:161
+msgid "Filter"
+msgstr ""
+
+#: templates/base.html:27 templates/base.html.py:29 templates/index.html:24
+#: templates/index.html.py:26 templates/news.html:10 templates/page.html:6
+msgid "News"
+msgstr ""
+
+#: templates/index.html:38
+msgid "St. Petersburg"
+msgstr ""
+
+#: templates/index.html:39
+msgid "Moscow"
+msgstr ""
+
+#: templates/index.html:40
+msgid "Peking"
+msgstr ""
+
+#: templates/index.html:41
+msgid "Shanghai"
+msgstr ""

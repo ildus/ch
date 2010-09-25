@@ -24,6 +24,7 @@ def page_url(alias):
 def tr(context, object, field):
     request = context['request']
     lang = request.LANGUAGE_CODE
+    if lang == 'zh': lang = 'cn'
     if hasattr(object, field) == False:
         return ''
     else:
@@ -38,7 +39,7 @@ def tr(context, object, field):
             lang_field = '%s_%s' % (field, lang)
             translated = getattr(object, lang_field) if hasattr(object, lang_field) else ''
             
-    if field in ('content', 'h1', 'right'):
+    if field in ('content', 'h1', 'right', 'text'):
         translated = mark_safe(translated)
     
     return {"value": translated }

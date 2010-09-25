@@ -14,7 +14,31 @@ def pages(request):
                 main_pages.append(page)
         except:
             pass
-    blocks = models.BottomBlock.objects.all()[:3]
+        
+    try:
+        phone = models.BottomBlock.objects.get(alias = 'phone')
+    except:
+        pass
+    
+    try:
+        address = models.BottomBlock.objects.get(alias = 'address')
+    except:
+        pass
+    
+    try:
+        copy = models.BottomBlock.objects.get(alias = 'copy')
+    except:
+        pass
+    
+    try:
+        news_left = models.BottomBlock.objects.get(alias = 'news_left')
+    except:
+        pass
+    
+    try:
+        news_right = models.BottomBlock.objects.get(alias = 'news_right')
+    except:
+        pass
         
     return locals()
     

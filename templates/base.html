@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	{% load i18n pages_tags %}
+	<title>China To Russia. {% firstof object.title "Российско-Китайское деловое сотрудничество." %} </title>
+	<link href="{{MEDIA_URL}}css/style.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+	<script type="text/javascript" src="{{MEDIA_URL}}js/main.js"> </script>
+</head>
+<body>
+	<div class="main">
+		<div class="slogan">
+			<a href="/">ChToRu.com</a><br />
+			C h i n a&nbsp;&nbsp;&nbsp;t o&nbsp;&nbsp;&nbsp;R u s s i a<br />&nbsp;<br />
+			<a onclick="set_lang('ru');" class="lang"> ru <img src="{{MEDIA_URL}}/images/flag_ru.gif" width="16" height="11" alt="русский" />&nbsp;&nbsp;&nbsp; </a>
+			<a onclick="set_lang('zh');" class="lang"> cn <img src="{{MEDIA_URL}}/images/flag_cn.gif" width="16" height="11" alt="chinese" />&nbsp;&nbsp;&nbsp; </a>
+			<a onclick="set_lang('en');" class="lang"> en <img src="{{MEDIA_URL}}/images/flag_en.gif" width="16" height="11" alt="english" /> </a>
+		</div>
+
+		<div class="menu1">
+			<img src="{{MEDIA_URL}}images/spacer.gif" height="1" width="30" alt="" />
+			
+			{% for one in main_pages %}
+				{% if one = 'news' %}
+					{% if is_news %}
+						<span> {% trans "News" %} </span>
+					{% else %}
+						<a href="{% url news %}"> {% trans "News" %}</a>
+					{% endif %}
+				{% else %}
+					{% if object.alias = one.alias %}
+						<span> {% tr one "name" %} </span>
+					{% else %}
+						<a href="{% page_url one.alias %}"> {% tr one "name" %}</a>
+					{% endif %}
+				{% endif %}				
+			{% endfor %}
+		</div>
+		<div class="menu2"></div>
+		{% block content %} content {% endblock %}
+	</div>
+	<div class="clear">
+		<img src="{{MEDIA_URL}}images/spacer.gif" height="65" width="1" alt="" />
+	</div>
+	<div class="line">
+		<img src="{{MEDIA_URL}}images/spacer.gif" width="1" height="1" alt="" />
+	</div>
+			<div class="footer1">
+			<div class="copy">	{% tr copy 'text' %} <a href="/experience/" class="left1">experience</a><br />
+<!--LiveInternet counter--><script type="text/javascript"><!--
+document.write("<a href='http://www.liveinternet.ru/click' "+
+"target=_blank><img src='http://counter.yadro.ru/hit?t44.1;r"+
+escape(document.referrer)+((typeof(screen)=="undefined")?"":
+";s"+screen.width+"*"+screen.height+"*"+(screen.colorDepth?
+screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
+";"+Math.random()+
+"' alt='' title='LiveInternet' "+
+"border=0 width=31 height=31><\/a>")//--></script><!--/LiveInternet-->
+</div>
+			<div class="phone">
+				<div class="left"> {% tr phone "text" %}
+				</div>
+				<div class="adress"> {% tr address "text" %}
+				</div>
+			</div>
+		</div><script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+	try {
+		var pageTracker = _gat._getTracker("UA-8720790-1");
+		pageTracker._trackPageview();
+	} 
+	catch(err) {}</script>
+</body>
+</html>

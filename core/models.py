@@ -48,19 +48,19 @@ class BasePage(models.Model):
                                                     help_text=_('tag "title"'))
     
     #name
-    name = models.CharField(_('name'), max_length = 255)
+    name = models.CharField(_('name'), max_length = 255, blank = True)
     name_cn = models.CharField(_('china name'), max_length = 255, blank = True)
-    name_ru = models.CharField(_('russian name'), max_length = 255, blank = True)
+    name_ru = models.CharField(_('russian name'), max_length = 255)
     
     #content
-    content = models.TextField(_('english content'))
+    content = models.TextField(_('english content'), blank = True)
     content_cn = models.TextField(_('china content'), blank = True)
-    content_ru = models.TextField(_('russian content'), blank = True)
+    content_ru = models.TextField(_('russian content'))
     
     #right
-    right = models.TextField(_('Right column'))
+    right = models.TextField(_('Right column'), blank = True)
     right_cn = models.TextField(_('Right column (ch)'), blank = True)
-    right_ru = models.TextField(_('Right column (ru)'), blank = True)
+    right_ru = models.TextField(_('Right column (ru)'))
     
     class Meta:
         abstract = True
@@ -106,14 +106,26 @@ class NewsItem(BasePage):
         return reverse('news_item', args = [self.alias])
         
 class BottomBlock(models.Model):
-    text = models.TextField()
+    CH = (
+        ('copy', 'copy'),
+        ('address', 'address'),
+        ('phone', 'phone'),
+        ('news_left', 'Text on Left Side of News Page'),
+        ('news_right', 'Text on Right Side of News Page'),
+    )
+    
+    alias = models.SlugField(choices = CH, unique = True)
+    
+    text_ru = models.TextField("RU")
+    text_cn = models.TextField("CN", blank = True)
+    text = models.TextField("EN", blank = True)
     
     def __unicode__(self):
-        return self.text
+        return self.alias
     
     class Meta:
-        verbose_name = _("bottom block")
-        verbose_name_plural = _("bottom blocks")
+        verbose_name = _("text")
+        verbose_name_plural = _("texts")
         
 def page_deleted(sender, **kwargs):
     instance = kwargs['instance']
