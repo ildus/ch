@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	{% load i18n pages_tags %}
+	<title>China To Russia. {% firstof object.title "Российско-Китайское деловое сотрудничество." %} </title>
+	<link href="{{MEDIA_URL}}css/style.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+	<script type="text/javascript" src="{{MEDIA_URL}}js/main.js"> </script>
+</head>
+	<body class="map">
+		<div>
+			<div class="slogan">
+				<a href="/">ChToRu.com</a><br />
+				C h i n a&nbsp;&nbsp;&nbsp;t o&nbsp;&nbsp;&nbsp;R u s s i a<br />&nbsp;<br />
+				<a href="/ru/" class="lang"> ru <img src="{{MEDIA_URL}}/images/flag_ru.gif" width="16" height="11" alt="русский" />&nbsp;&nbsp;&nbsp; </a>
+				<a href="/cn/" class="lang"> cn <img src="{{MEDIA_URL}}/images/flag_cn.gif" width="16" height="11" alt="china" />&nbsp;&nbsp;&nbsp; </a>
+				<a href="/en/" class="lang"> en <img src="{{MEDIA_URL}}/images/flag_en.gif" width="16" height="11" alt="english" /> </a>
+			</div>
+			<div class="menu">
+				{% for one in main_pages %}
+				{% if one = 'news' %}
+					{% if is_news %}
+						{% trans "News" %}
+					{% else %}
+						<a href="{% url news language %}"> {% trans "News" %}</a>
+					{% endif %}
+				{% else %}
+					{% if object.alias = one.alias %}
+						<span> {% tr one "name" %} </span>
+					{% else %}
+						<a href="{% page_url one.alias language %}"> {% tr one "name" %}</a>
+					{% endif %}
+				{% endif %}				
+				{% endfor %}
+			</div>
+			<div class="content">
+				<div class="saint"> {% trans "St. Petersburg" %}</div>
+				<div class="moscow"> {% trans "Moscow" %}</div>
+				<div class="pekin"> {% trans "Peking" %}</div>
+				<div class="shanx"> {% trans "Shanghai" %} </div>						
+			</div>
+			<div class="links">
+				<ul>
+					{% news 10 %}
+				</ul>
+  			</div>
+			<div class="footer">
+				<div class="copy">	{% tr copy 'text' %}</div>
+				<div class="phone">
+					<div class="left"> {% tr phone "text" %}</div>
+					<div class="adress"> {% tr address "text" %} </div>
+				</div>
+			</div>
+
+		</div>
+	<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-8720790-1");
+pageTracker._trackPageview();
+} catch(err) {}</script></body>
+</html>

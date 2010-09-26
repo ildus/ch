@@ -13,24 +13,31 @@ from core.models import Page, NewsItem
 register = template.Library()
 
 @register.simple_tag
-def page_url(alias):
+def page_url(alias, lang):
     try:
         page = Page.objects.get(alias = alias)
-        return page.get_absolute_url()
+        return page.lang_url(lang)
+    except:
+        return '#'
+    
+@register.simple_tag
+def new_url(item, lang):
+    try:
+        return item.lang_url(lang)
     except:
         return '#'
     
 @register.inclusion_tag('content.html', takes_context = True)
 def tr(context, object, field):
-    request = context['request']
-    lang = request.LANGUAGE_CODE
+    lang = context.get('language') or 'ru'
     if lang == 'zh': lang = 'cn'
+    translated = ''
     if hasattr(object, field) == False:
         return ''
     else:
         if lang == 'en':
             translated = getattr(object, field)
-        if lang in ('ru', 'cn'):
+        elif lang in ('ru', 'cn'):
             lang_field = '%s_%s' % (field, lang)
             translated = getattr(object, lang_field) if hasattr(object, lang_field) else ''
         

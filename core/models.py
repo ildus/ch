@@ -83,6 +83,10 @@ class Page(BasePage, NS_Node):
             for one in parents:
                 p += '/%s'%(one.alias)
         return "%s/%s/" % (p, self.alias)
+    
+    def lang_url(self, lang = None):
+        lang = lang or 'ru'
+        return '/%s%s' % (lang, self.get_absolute_url())
         
     def save(self,*args,**kwargs):
         self.url = self.get_absolute_url()
@@ -95,6 +99,10 @@ class Page(BasePage, NS_Node):
         
 class NewsItem(BasePage):
     created = models.DateTimeField(_("Creating date"), default = datetime.now)
+    
+    def lang_url(self, lang = None):
+        lang = lang or 'ru'
+        return '/%s%s' % (lang, self.get_absolute_url())
     
     class Meta:
         verbose_name = _('news Item')

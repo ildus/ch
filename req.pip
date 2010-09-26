@@ -1,6 +1,8 @@
 Django==1.2.3
 PIL==1.1.7
-distribute==0.6.10
 django-treebeard==1.61
 sorl-thumbnail==3.2.5
-wsgiref==0.1.2
+django-tagging
+mysql-python
+south
+django-staticfiles

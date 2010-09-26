@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load pages_tags i18n %}
+{% block content %}
+		<div class="content">
+			<div class="left1">
+								<b class="news">{% trans "News" %}</b>
+				<ul>
+					{% news 10 %}
+				</ul>			
+				</div>
+			<div class="right">
+				<div class="text">
+					<h3> {% tr object "h1" %}</h3>
+					{% tr object "content" %}	
+				</div>
+				<div class="service">
+					{% tr object "right" %}			
+				</div>
+			</div>
+		</div>
+{% endblock %}

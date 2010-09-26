@@ -10,11 +10,8 @@ class Page:
     def process_response(self,request,response):
         if response.status_code == 404:
             try:
-                print request.path
                 response = helpers.get_page(request)
             except helpers.PageDoesNotExist:
-                pass
-            except:
                 pass
             
         return response
