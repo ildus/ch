@@ -3,18 +3,18 @@
 {% block content %}
 		<div class="content">
 			<div class="left1">
-								<b class="news">{% trans "News" %}</b>
+				<b class="news">{% trans "News" %}</b>
 				<ul>
 					{% news 10 %}
 				</ul>			
 				</div>
 			<div class="right">
 				<div class="text">
-					<h3> {% tr object "h1" %}</h3>
-					{% tr object "content" %}	
+					<h3> {{object.h1 }} </h3>
+					{{ object.content|safe }}	
 				</div>
 				<div class="service">
-					{% tr object "right" %}			
+					{{ object.right|safe }}		
 				</div>
 			</div>
 		</div>

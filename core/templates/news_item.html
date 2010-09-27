@@ -1,5 +1,5 @@
 {% load pages_tags %}
 {% for item in news %}
 	<li><b> {{item.created|date:"d.m.Y"}}</b><br />
-		<a href="{% new_url item language %}"> {% tr item 'name' %}</a></li>
+		<a href="{{ item.get_absolute_url }}"> {{item.name}}</a></li>
 {% endfor %}

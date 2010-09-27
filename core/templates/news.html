@@ -3,7 +3,7 @@
 {% block content %}
 	<div class="content">
 		<div class="left2">
-			{{ news_left }}
+			{{ news_left|safe }}
            </div>
 		<div class="right">
 			<div class="news-list">
@@ -13,7 +13,7 @@
                    </ul>
 			</div>
 			<div class="service">
-				{{ news_right }}			
+				{{ news_right|safe }}			
 			</div>
 		</div>					
 	</div>

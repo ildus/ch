@@ -15,7 +15,7 @@ register = template.Library()
 @register.simple_tag
 def page_url(alias, lang):
     try:
-        page = Page.objects.get(alias = alias)
+        page = Page.objects.get(alias = alias, language = lang)
         return page.lang_url(lang)
     except:
         return '#'
@@ -27,33 +27,10 @@ def new_url(item, lang):
     except:
         return '#'
     
-@register.inclusion_tag('content.html', takes_context = True)
-def tr(context, object, field):
-    lang = context.get('language') or 'ru'
-    if lang == 'zh': lang = 'cn'
-    translated = ''
-    if hasattr(object, field) == False:
-        return ''
-    else:
-        if lang == 'en':
-            translated = getattr(object, field)
-        elif lang in ('ru', 'cn'):
-            lang_field = '%s_%s' % (field, lang)
-            translated = getattr(object, lang_field) if hasattr(object, lang_field) else ''
-        
-        if translated.strip() == '':
-            lang = settings.LANGUAGE_CODE
-            lang_field = '%s_%s' % (field, lang)
-            translated = getattr(object, lang_field) if hasattr(object, lang_field) else ''
-            
-    if field in ('content', 'h1', 'right', 'text'):
-        translated = mark_safe(translated)
-    
-    return {"value": translated }
-
 @register.inclusion_tag('news_item.html', takes_context = True)
 def news(context, count):
-    news = NewsItem.objects.all()
+    language = context['language']
+    news = NewsItem.objects.filter(language = language)
     if count <= 10:
         news = news[:10]
     context['news'] = news

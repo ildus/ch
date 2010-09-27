@@ -8,12 +8,11 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     
-    url(r'^i18n/', include('django.conf.urls.i18n')),
-    url(r'^(?:(en|ru|cn)/)?$', 'core.views.index', name = 'index'),
-    url(r'^(?:(en|ru|cn)/)?news/$', 'core.views.news', name = 'news'),
-    url(r'^((?P<language>(?:(en|ru|cn)))/)?news/(?P<alias>[-\w]+)/$', 'core.views.news_item', name = 'news_item'),
-
     (r'^admin/', include(admin.site.urls)),
+    url(r'^i18n/', include('django.conf.urls.i18n')),
+    url(r'^(?:(en|ru|zh)/)?$', 'core.views.index', name = 'index'),
+    url(r'^(?:(en|ru|zh)/)?news/$', 'core.views.news', name = 'news'),
+    url(r'^((?P<language>(?:(en|ru|zh)))/)?news/(?P<alias>[-\w]+)/$', 'core.views.news_item', name = 'news_item'),
 )
 
 if settings.LOCAL:

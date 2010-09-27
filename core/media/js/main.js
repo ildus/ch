@@ -1,6 +1,5 @@
-function set_lang(lang) {
-	$.post("/i18n/setlang/", {language: lang}, 
-			function(){ 
-				location.reload(); 
-			});
-}
+dojo.addOnLoad(function () {
+	dojo.query('.lang').onclick(function (e) {
+		alert('oki')
+	})
+})

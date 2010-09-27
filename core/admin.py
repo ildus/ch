@@ -14,23 +14,17 @@ import core.models
 from abstract import BasePageAdmin
 
 class PageAdmin(BasePageAdmin, TreeEditor):
-    list_display = ('name', 'alias', 'url', 'active_toggle')        
+    list_display = ('name', 'alias', 'language', 'url', 'active_toggle')        
     active_toggle = ajax_editable_boolean('active', _('is active'))
     
     form = core.forms.PageForm
     
     fieldsets = (
         (_('Options'), {
-            'fields': ('alias', 'active', 'meta_redirect'),
+            'fields': ('alias', 'active', 'meta_redirect', 'language'),
         }),
-        ( _('Russian'), {
-            'fields':( ('name_ru', 'title_ru'), 'h1_ru', 'content_ru', 'right_ru', )
-        }),  
-        ( _('English'), {
+        ( _('Text'), {
             'fields':( ('name', 'title'), 'h1', 'content', 'right')
-        }),
-        ( _('China'), {
-            'fields':( ('name_cn', 'title_cn'), 'h1_cn', 'content_cn', 'right_cn')
         }),
               
         (_('Meta'), {
@@ -42,21 +36,15 @@ class PageAdmin(BasePageAdmin, TreeEditor):
     )
     
 class NewsAdmin(BasePageAdmin):
-    list_display = ('name', 'alias')
+    list_display = ('name', 'alias', 'language')
     
     form = core.forms.BasePageForm
     
     fieldsets = (
         (_('Options'), {
-            'fields': ('alias', 'active', 'meta_redirect'),
-        }),
-        ( _('Russian'), {
-            'fields':( ('name_ru', 'title_ru'), 'h1_ru', 'content_ru', 'right_ru', )
-        }),
-        ( _('China'), {
-            'fields':( ('name_cn', 'title_cn'), 'h1_cn', 'content_cn', 'right_cn')
-        }),        
-        ( _('English'), {
+            'fields': ('alias', 'active', 'meta_redirect', 'language'),
+        }), 
+        ( _('Text'), {
             'fields':( ('name', 'title'), 'h1', 'content', 'right')
         }),    
         (_('Meta'), {
@@ -65,12 +53,13 @@ class NewsAdmin(BasePageAdmin):
     )
     
 class BottomAdmin(admin.ModelAdmin):
+    list_display = ('alias', 'language')
     from django.db import models
     from lib.fields.widgets import TinyMCEEditor
     formfield_overrides = {
-        models.CharField : {"widget" : TinyMCEEditor}
+        models.TextField : {"widget" : TinyMCEEditor}
     }
     
 admin.site.register(core.models.Page, PageAdmin)
 admin.site.register(core.models.NewsItem, NewsAdmin)
-admin.site.register(core.models.BottomBlock, admin.ModelAdmin)
+admin.site.register(core.models.BottomBlock, BottomAdmin)

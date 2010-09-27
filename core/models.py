@@ -2,6 +2,7 @@
 
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
+from django.conf import settings
 
 from treebeard.ns_tree import NS_Node
 from datetime import datetime
@@ -13,7 +14,7 @@ class PageManager(models.Manager):
     def active(self):
         qs = self.get_query_set().filter(active=True)
         return qs
-
+    
 class BasePage(models.Model):
     '''
         Абстрактная модель для всех объектов которые могут иметь собственную страницу.
@@ -30,37 +31,16 @@ class BasePage(models.Model):
     active = models.BooleanField(_('active'), default=True)
     
     #поле необходимое для поиска
-    indexed = models.DateTimeField(_('indexed'), null = True, blank = True, editable = False)
+    indexed = models.DateTimeField(_('indexed'), null = True, blank = True, editable = False)   
+    language = models.CharField(max_length = 2, choices = settings.LANGUAGES, default = 'ru')
     
     objects = PageManager()
     
-    #h1
     h1 = models.CharField('H1', max_length = 255, blank=True, help_text=_('tag H1'))
-    h1_cn = models.CharField('H1', max_length = 255, blank=True, help_text=_('tag H1'))
-    h1_ru = models.CharField('H1', max_length = 255, blank=True, help_text=_('tag H1'))
-    
-    #title
-    title = models.CharField(_('title'), max_length = 255, blank=True, 
-                                                    help_text=_('tag "title"'))
-    title_cn = models.CharField(_('title'), max_length = 255, blank=True, 
-                                                    help_text=_('tag "title"'))
-    title_ru = models.CharField(_('title'), max_length = 255, blank=True, 
-                                                    help_text=_('tag "title"'))
-    
-    #name
+    title = models.CharField(_('title'), max_length = 255, blank=True, help_text=_('tag "title"'))
     name = models.CharField(_('name'), max_length = 255, blank = True)
-    name_cn = models.CharField(_('china name'), max_length = 255, blank = True)
-    name_ru = models.CharField(_('russian name'), max_length = 255)
-    
-    #content
-    content = models.TextField(_('english content'), blank = True)
-    content_cn = models.TextField(_('china content'), blank = True)
-    content_ru = models.TextField(_('russian content'))
-    
-    #right
+    content = models.TextField(_('content'), blank = True)
     right = models.TextField(_('Right column'), blank = True)
-    right_cn = models.TextField(_('Right column (ch)'), blank = True)
-    right_ru = models.TextField(_('Right column (ru)'))
     
     class Meta:
         abstract = True
@@ -82,11 +62,7 @@ class Page(BasePage, NS_Node):
         if parents:
             for one in parents:
                 p += '/%s'%(one.alias)
-        return "%s/%s/" % (p, self.alias)
-    
-    def lang_url(self, lang = None):
-        lang = lang or 'ru'
-        return '/%s%s' % (lang, self.get_absolute_url())
+        return "/%s%s/%s/" % (self.language, p, self.alias)
         
     def save(self,*args,**kwargs):
         self.url = self.get_absolute_url()
@@ -100,18 +76,13 @@ class Page(BasePage, NS_Node):
 class NewsItem(BasePage):
     created = models.DateTimeField(_("Creating date"), default = datetime.now)
     
-    def lang_url(self, lang = None):
-        lang = lang or 'ru'
-        return '/%s%s' % (lang, self.get_absolute_url())
-    
     class Meta:
         verbose_name = _('news Item')
         verbose_name_plural = _('news')
         ordering = ('-created', )
         
     def get_absolute_url(self):
-        from django.core.urlresolvers import reverse
-        return reverse('news_item', args = [self.alias])
+        return "/%s/news/%s/" % (self.language, self.alias)
         
 class BottomBlock(models.Model):
     CH = (
@@ -122,11 +93,9 @@ class BottomBlock(models.Model):
         ('news_right', 'Text on Right Side of News Page'),
     )
     
-    alias = models.SlugField(choices = CH, unique = True)
-    
-    text_ru = models.TextField("RU")
-    text_cn = models.TextField("CN", blank = True)
-    text = models.TextField("EN", blank = True)
+    alias = models.SlugField(choices = CH)
+    language = models.CharField(max_length = 2, choices = settings.LANGUAGES)
+    text = models.TextField(_("Text"), blank = True)
     
     def __unicode__(self):
         return self.alias
@@ -134,6 +103,7 @@ class BottomBlock(models.Model):
     class Meta:
         verbose_name = _("text")
         verbose_name_plural = _("texts")
+        unique_together = (("alias", "language"),)
         
 def page_deleted(sender, **kwargs):
     instance = kwargs['instance']
