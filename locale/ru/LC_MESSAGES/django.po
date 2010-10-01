@@ -8,40 +8,45 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-09-25 12:12+0400\n"
+"POT-Creation-Date: 2010-10-01 20:46+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
+"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 
-#: settings.py:44 core/admin.py:32 core/admin.py:52
+#: settings.py:44
 msgid "Russian"
 msgstr ""
 
-#: settings.py:45 core/admin.py:26 core/admin.py:58
+#: settings.py:45
 msgid "English"
 msgstr ""
 
-#: settings.py:46 core/admin.py:29 core/admin.py:55
-msgid "China"
+#: settings.py:46
+msgid "Chinese"
 msgstr ""
 
 #: core/admin.py:18
 msgid "is active"
 msgstr ""
 
-#: core/admin.py:23 core/admin.py:49
+#: core/admin.py:23 core/admin.py:44
 msgid "Options"
 msgstr ""
 
-#: core/admin.py:35 core/admin.py:61
+#: core/admin.py:26 core/admin.py:47 core/models.py:98
+msgid "Text"
+msgstr ""
+
+#: core/admin.py:30 core/admin.py:50
 msgid "Meta"
 msgstr ""
 
-#: core/admin.py:38
+#: core/admin.py:33
 msgid "Tree location"
 msgstr ""
 
@@ -49,7 +54,7 @@ msgstr ""
 msgid "Description"
 msgstr ""
 
-#: core/forms.py:16 core/models.py:25
+#: core/forms.py:16 core/models.py:26
 msgid "meta tag \"description\""
 msgstr ""
 
@@ -57,113 +62,110 @@ msgstr ""
 msgid "Keywords"
 msgstr ""
 
-#: core/forms.py:18 core/models.py:27
+#: core/forms.py:18 core/models.py:28
 msgid "meta tag \"keywords\""
 msgstr ""
 
-#: core/models.py:22
+#: core/models.py:23
 msgid "alias"
 msgstr ""
 
-#: core/models.py:24 lib/models.py:13
+#: core/models.py:25 lib/models.py:13
 msgid "description"
 msgstr ""
 
-#: core/models.py:26
+#: core/models.py:27
 msgid "keywords"
 msgstr ""
 
-#: core/models.py:28
+#: core/models.py:29
 msgid "redirect"
 msgstr ""
 
-#: core/models.py:29
+#: core/models.py:30
 msgid "http 302"
 msgstr ""
 
-#: core/models.py:30
+#: core/models.py:31
 msgid "active"
 msgstr ""
 
-#: core/models.py:33
+#: core/models.py:34
 msgid "indexed"
 msgstr ""
 
-#: core/models.py:38 core/models.py:39 core/models.py:40
+#: core/models.py:39
 msgid "tag H1"
 msgstr ""
 
-#: core/models.py:43 core/models.py:45 core/models.py:47
-#: lib/extensions/tree_editor.py:179
+#: core/models.py:40 lib/extensions/tree_editor.py:179
 msgid "title"
 msgstr ""
 
-#: core/models.py:44 core/models.py:46 core/models.py:48
+#: core/models.py:40
 msgid "tag \"title\""
 msgstr ""
 
-#: core/models.py:51
+#: core/models.py:41
 msgid "name"
 msgstr ""
 
-#: core/models.py:52
-msgid "china name"
+#: core/models.py:42
+msgid "content"
 msgstr ""
 
-#: core/models.py:53
-msgid "russian name"
-msgstr ""
-
-#: core/models.py:56
-msgid "english content"
-msgstr ""
-
-#: core/models.py:57
-msgid "china content"
-msgstr ""
-
-#: core/models.py:58
-msgid "russian content"
-msgstr ""
-
-#: core/models.py:61
+#: core/models.py:43
 msgid "Right column"
 msgstr ""
 
-#: core/models.py:62
-msgid "Right column (ch)"
-msgstr ""
-
-#: core/models.py:63
-msgid "Right column (ru)"
-msgstr ""
-
-#: core/models.py:92
+#: core/models.py:72
 msgid "page"
 msgstr ""
 
-#: core/models.py:93
+#: core/models.py:73
 msgid "pages"
 msgstr ""
 
-#: core/models.py:97
+#: core/models.py:77
 msgid "Creating date"
 msgstr ""
 
-#: core/models.py:100
+#: core/models.py:80
 msgid "news Item"
 msgstr ""
 
-#: core/models.py:101
+#: core/models.py:81
 msgid "news"
 msgstr ""
 
-#: core/models.py:115
-msgid "bottom block"
+#: core/models.py:104
+msgid "text"
 msgstr ""
 
-#: core/models.py:116
-msgid "bottom blocks"
+#: core/models.py:105
+msgid "texts"
+msgstr ""
+
+#: core/templates/base.html:20 core/templates/base.html.py:22
+#: core/templates/index.html:17 core/templates/index.html.py:19
+#: core/templates/news.html:10 core/templates/page.html:6
+msgid "News"
+msgstr ""
+
+#: core/templates/index.html:31
+msgid "St. Petersburg"
+msgstr ""
+
+#: core/templates/index.html:32
+msgid "Moscow"
+msgstr ""
+
+#: core/templates/index.html:33
+msgid "Peking"
+msgstr ""
+
+#: core/templates/index.html:34
+msgid "Shanghai"
 msgstr ""
 
 #: lib/admin.py:18 lib/models.py:12 lib/models.py:26
@@ -240,38 +242,4 @@ msgstr ""
 
 #: lib/templates/admin/tree_editor.html:161
 msgid "Filter"
-msgstr ""
-
-#: templates/index.html:21
-msgid "About"
-msgstr ""
-
-#: templates/index.html:22
-msgid "Services"
-msgstr ""
-
-#: templates/index.html:23 templates/news.html:28 templates/news.html.py:30
-#: templates/news.html:54 templates/page.html:27 templates/page.html.py:29
-#: templates/page.html:46
-msgid "News"
-msgstr ""
-
-#: templates/index.html:24
-msgid "Contacts"
-msgstr ""
-
-#: templates/index.html:27
-msgid "St. Petersburg"
-msgstr ""
-
-#: templates/index.html:28
-msgid "Moscow"
-msgstr ""
-
-#: templates/index.html:29
-msgid "Peking"
-msgstr ""
-
-#: templates/index.html:30
-msgid "Shanghai"
 msgstr ""
