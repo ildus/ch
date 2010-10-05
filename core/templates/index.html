@@ -3,7 +3,28 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	{% load i18n pages_tags %}
-	<title>China To Russia. {% firstof object.title "Российско-Китайское деловое сотрудничество." %} </title>
+	<title>
+        {% block title %}
+        {% if main_page_title %}
+                {{ main_page_title }}
+        {% else %}
+                {% firstof metadata.title object.title %}
+        {% endif %}
+        {% endblock %}
+    </title>
+    {% block keywords %}
+    {% if metadata %}
+        <meta name="description" content="{{ metadata.meta_description }}">
+        <meta name="keywords" content="{{ metadata.meta_keywords }}">
+    {% else %}
+        {% if object %}
+        <meta name="description" content="{{ object.meta_description }}">
+        <meta name="keywords" content="{{ object.meta_keywords }}">
+        {% endif %}
+    {% endif %}
+    
+    {% endblock %}
+	{% load i18n pages_tags %}
 	<link href="{{MEDIA_URL}}css/style.css" rel="stylesheet" type="text/css" />
 	<script src="http://ajax.googleapis.com/ajax/libs/dojo/1.4/dojo/dojo.xd.js" type="text/javascript"></script>
 </head>
@@ -11,26 +32,12 @@
 		<div>
 			{% include "slogan.html" %}
 			<div class="menu">
-				{% for one in main_pages %}
-				{% if one = 'news' %}
-					{% if is_news %}
-						{% trans "News" %}
-					{% else %}
-						<a href="{% url news language %}"> {% trans "News" %}</a>
-					{% endif %}
-				{% else %}
-					{% if object.alias = one.alias %}
-						<span> {{one.name}} </span>
-					{% else %}
-						<a href="{{one.get_absolute_url}}"> {{ one.name }}</a>
-					{% endif %}
-				{% endif %}				
-				{% endfor %}
+				{% include "menu.html" %}
 			</div>
 			<div class="content">
 				<div class="saint"> {% trans "St. Petersburg" %}</div>
 				<div class="moscow"> {% trans "Moscow" %}</div>
-				<div class="pekin"> {% trans "Peking" %}</div>
+				<div class="pekin"> {% trans "Beijing" %}</div>
 				<div class="shanx"> {% trans "Shanghai" %} </div>						
 			</div>
 			<div class="links">
@@ -38,13 +45,17 @@
 					{% news 10 %}
 				</ul>
   			</div>
-			<div class="footer">
-				<div class="copy">	{{ copy.text|safe }}</div>
-				<div class="phone">
-					<div class="left"> {{phone.text|safe }}</div>
-					<div class="adress"> {{address.text|safe}} </div>
-				</div>
-			</div>
+  			<br clear="all" />
+			<div class="footer footer3">
+				<table width="1000px">
+					<tr>
+						<td class="td1" style="padding: 0"> {{ footer.text1|safe }} </td>
+						<td class="td2"> {{ footer.text2|safe}} </td>
+						<td class="td3"> {{ footer.text3|safe }} </td>
+						<td class="td4"> {{ footer.text4|safe }} </td>
+					</tr>
+				</table>
+			</div>	
 
 		</div>
 		{% include 'qa.html' %}

@@ -189,7 +189,7 @@ body{
 			}
 .left1{
 		float:left;
-		width:178px;
+		width:150px;
 		text-align:left;
 		padding-left:36px;
 		font-size:11px;
@@ -387,3 +387,43 @@ body{
 .pagination ul { list-style:none; float:left; margin:0; padding:0;}
 .pagination li { float:left; font-size:11px; color:#2491ba; margin:0 3px 0 0!important; padding:0;}
 .pagination li a { margin:0;}
+
+.footer p, .footer1 p, .footer3 p {
+	padding: 0;
+	margin: 0;
+}
+
+.footer3 table {
+	font-size: 11px;
+	color: #373737;
+}
+
+.footer3 table td {
+	padding-left: 20px;
+	margin: 0;
+	vertical-align: top;
+	border-right: 1px dotted #000;
+}
+
+.footer3 table .td1 {
+	padding-left: 21px;
+	width: 380px;
+	
+}
+
+.footer3 table .td2 {
+	width: 170px;
+}
+
+.footer3 table .td3 {
+	width: 210px;
+}
+
+.footer3 table .td4 {
+	width: 210px;
+}
+
+.footer3 img {
+	margin-left: 20px;
+	margin-top: -20px;
+}

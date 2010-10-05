@@ -14,7 +14,7 @@ class Page:
                 response = helpers.get_page(request)
             except ObjectDoesNotExist:
                 pass
-#            except:
-#                pass
+            except:
+                pass
             
         return response

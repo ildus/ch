@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-01 20:46+0400\n"
+"POT-Creation-Date: 2010-10-05 13:47+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,33 +20,33 @@ msgstr ""
 
 #: settings.py:44
 msgid "Russian"
-msgstr ""
+msgstr "Русский"
 
 #: settings.py:45
 msgid "English"
-msgstr ""
+msgstr "Английский"
 
 #: settings.py:46
 msgid "Chinese"
-msgstr ""
+msgstr "Китайский"
 
 #: core/admin.py:18
 msgid "is active"
 msgstr ""
 
-#: core/admin.py:23 core/admin.py:44
+#: core/admin.py:24 core/admin.py:45
 msgid "Options"
 msgstr ""
 
-#: core/admin.py:26 core/admin.py:47 core/models.py:98
+#: core/admin.py:27 core/admin.py:48
 msgid "Text"
 msgstr ""
 
-#: core/admin.py:30 core/admin.py:50
+#: core/admin.py:31 core/admin.py:51
 msgid "Meta"
 msgstr ""
 
-#: core/admin.py:33
+#: core/admin.py:34
 msgid "Tree location"
 msgstr ""
 
@@ -54,7 +54,7 @@ msgstr ""
 msgid "Description"
 msgstr ""
 
-#: core/forms.py:16 core/models.py:26
+#: core/forms.py:16 core/models.py:25
 msgid "meta tag \"description\""
 msgstr ""
 
@@ -62,7 +62,7 @@ msgstr ""
 msgid "Keywords"
 msgstr ""
 
-#: core/forms.py:18 core/models.py:28
+#: core/forms.py:18 core/models.py:26
 msgid "meta tag \"keywords\""
 msgstr ""
 
@@ -74,47 +74,47 @@ msgstr ""
 msgid "description"
 msgstr ""
 
-#: core/models.py:27
+#: core/models.py:26
 msgid "keywords"
 msgstr ""
 
-#: core/models.py:29
+#: core/models.py:27
 msgid "redirect"
 msgstr ""
 
-#: core/models.py:30
+#: core/models.py:27
 msgid "http 302"
 msgstr ""
 
-#: core/models.py:31
+#: core/models.py:28
 msgid "active"
 msgstr ""
 
-#: core/models.py:34
+#: core/models.py:31
 msgid "indexed"
 msgstr ""
 
-#: core/models.py:39
+#: core/models.py:36
 msgid "tag H1"
 msgstr ""
 
-#: core/models.py:40 lib/extensions/tree_editor.py:179
+#: core/models.py:37 lib/extensions/tree_editor.py:179
 msgid "title"
 msgstr ""
 
-#: core/models.py:40
+#: core/models.py:37
 msgid "tag \"title\""
 msgstr ""
 
-#: core/models.py:41
+#: core/models.py:38
 msgid "name"
 msgstr ""
 
-#: core/models.py:42
+#: core/models.py:39
 msgid "content"
 msgstr ""
 
-#: core/models.py:43
+#: core/models.py:40
 msgid "Right column"
 msgstr ""
 
@@ -138,35 +138,59 @@ msgstr ""
 msgid "news"
 msgstr ""
 
+#: core/models.py:92
+msgid "Text On Left"
+msgstr ""
+
+#: core/models.py:93
+msgid "Text On Right"
+msgstr ""
+
+#: core/models.py:99 core/models.py:100
+msgid "news page texts"
+msgstr ""
+
 #: core/models.py:104
-msgid "text"
+msgid "Text 1"
 msgstr ""
 
 #: core/models.py:105
-msgid "texts"
+msgid "Text 2"
 msgstr ""
 
-#: core/templates/base.html:20 core/templates/base.html.py:22
-#: core/templates/index.html:17 core/templates/index.html.py:19
-#: core/templates/news.html:10 core/templates/page.html:6
-msgid "News"
+#: core/models.py:106
+msgid "Text 3"
 msgstr ""
 
-#: core/templates/index.html:31
+#: core/models.py:107
+msgid "Text 4"
+msgstr ""
+
+#: core/models.py:113 core/models.py:114
+msgid "footer texts"
+msgstr ""
+
+#: core/templates/index.html:17
 msgid "St. Petersburg"
-msgstr ""
+msgstr "Санкт Петербург"
 
-#: core/templates/index.html:32
+#: core/templates/index.html:18
 msgid "Moscow"
-msgstr ""
+msgstr "Москва"
 
-#: core/templates/index.html:33
-msgid "Peking"
-msgstr ""
+#: core/templates/index.html:19
+msgid "Beijing"
+msgstr "Пекин"
 
-#: core/templates/index.html:34
+#: core/templates/index.html:20
 msgid "Shanghai"
-msgstr ""
+msgstr "Шанхай"
+
+#: core/templates/menu.html:5 core/templates/menu.html.py:8
+#: core/templates/menu.html:10 core/templates/news.html:10
+#: core/templates/page.html:6
+msgid "News"
+msgstr "Новости"
 
 #: lib/admin.py:18 lib/models.py:12 lib/models.py:26
 msgid "image"

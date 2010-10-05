@@ -1,0 +1,20 @@
+{% load i18n %}
+{% for one in main_pages %}
+	{% if one = 'news' %}
+		{% if is_news %}
+			<span> {% trans "News" %} </span>
+		{% else %}
+			{% if language = 'ru' %}
+			<a href="/news/"> {% trans "News" %} </a>
+			{% else %}
+			<a href="{% url news language %}"> {% trans "News" %}</a>
+			{% endif %}
+		{% endif %}
+	{% else %}
+		{% if object.alias = one.alias %}
+			<span> {{one.name}} </span>
+		{% else %}
+			<a href="{{one.get_absolute_url}}"> {{ one.name }}</a>
+		{% endif %}
+	{% endif %}				
+{% endfor %}

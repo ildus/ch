@@ -14,6 +14,7 @@ def activate_language(request, lang_code):
     if lang_code and check_for_language(lang_code):
         if hasattr(request, 'session'):
             request.session['django_language'] = lang_code
+        request.LANGUAGE_CODE = lang_code
             
 def get_page(request):
     '''
@@ -28,6 +29,7 @@ def get_page(request):
             activate_language(request, elems[1])
         else:
             activate_language(request, 'ru')
+            path = '/ru'+path
     object =  get_object_or_404(core.models.Page,url=path)
     if object.meta_redirect:
         return redirect(object.meta_redirect)

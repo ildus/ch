@@ -14,7 +14,15 @@
 					{{ object.content|safe }}	
 				</div>
 				<div class="service">
-					{{ object.right|safe }}		
+					{% if is_news %}
+						{% if object.right %}
+							{{object.right|safe}}
+						{% else %}
+							{{news_text.text_right|safe}}
+						{% endif %}
+					{% else %}
+					{{ object.right|safe }}
+					{% endif %}
 				</div>
 			</div>
 		</div>

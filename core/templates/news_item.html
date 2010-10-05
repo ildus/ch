@@ -1,5 +1,9 @@
 {% load pages_tags %}
 {% for item in news %}
 	<li><b> {{item.created|date:"d.m.Y"}}</b><br />
-		<a href="{{ item.get_absolute_url }}"> {{item.name}}</a></li>
+		<a href="{{ item.get_absolute_url }}"> {{item.name}}</a>
+		{% if is_center %}
+		<p> {{item.anonce|safe}} </p>
+		{% endif %}	
+	</li>
 {% endfor %}

@@ -9,7 +9,7 @@ admin.autodiscover()
 urlpatterns = patterns('',
     
     (r'^admin/', include(admin.site.urls)),
-    url(r'^i18n/', include('django.conf.urls.i18n')),
+    url(r'^i18n/setlang/', 'core.views.set_language', name = 'setlang'),
     url(r'^(?:(en|ru|zh)/)?$', 'core.views.index', name = 'index'),
     url(r'^(?:(en|ru|zh)/)?news/$', 'core.views.news', name = 'news'),
     url(r'^((?P<language>(?:(en|ru|zh)))/)?news/(?P<alias>[-\w]+)/$', 'core.views.news_item', name = 'news_item'),

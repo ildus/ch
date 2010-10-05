@@ -28,10 +28,11 @@ def new_url(item, lang):
         return '#'
     
 @register.inclusion_tag('news_item.html', takes_context = True)
-def news(context, count):
+def news(context, count, is_center = 0):
     language = context['language']
     news = NewsItem.objects.filter(language = language)
     if count <= 10:
         news = news[:10]
     context['news'] = news
+    context['is_center'] = is_center
     return context

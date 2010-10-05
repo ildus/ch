@@ -16,6 +16,7 @@ from abstract import BasePageAdmin
 class PageAdmin(BasePageAdmin, TreeEditor):
     list_display = ('name', 'alias', 'language', 'url', 'active_toggle')        
     active_toggle = ajax_editable_boolean('active', _('is active'))
+    list_filter = ('language', )
     
     form = core.forms.PageForm
     
@@ -38,28 +39,28 @@ class PageAdmin(BasePageAdmin, TreeEditor):
 class NewsAdmin(BasePageAdmin):
     list_display = ('name', 'alias', 'language')
     
-    form = core.forms.BasePageForm
-    
+    form = core.forms.NewsForm   
     fieldsets = (
         (_('Options'), {
             'fields': ('alias', 'active', 'meta_redirect', 'language'),
         }), 
         ( _('Text'), {
-            'fields':( ('name', 'title'), 'h1', 'content', 'right')
+            'fields':( ('name', 'title'), 'h1', 'anonce', 'content', 'right')
         }),    
         (_('Meta'), {
             'fields': ( 'meta_description','meta_keywords'),
         }),
     )
     
-class BottomAdmin(admin.ModelAdmin):
-    list_display = ('alias', 'language')
+class FooterAdmin(admin.ModelAdmin):
     from django.db import models
     from lib.fields.widgets import TinyMCEEditor
     formfield_overrides = {
         models.TextField : {"widget" : TinyMCEEditor}
     }
     
+admin.site.register(core.models.FooterText, FooterAdmin)
+admin.site.register(core.models.Metadata, FooterAdmin)   
 admin.site.register(core.models.Page, PageAdmin)
 admin.site.register(core.models.NewsItem, NewsAdmin)
-admin.site.register(core.models.BottomBlock, BottomAdmin)
+admin.site.register(core.models.NewsPageTexts, FooterAdmin)

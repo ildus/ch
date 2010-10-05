@@ -22,12 +22,9 @@ class BasePage(models.Model):
     
     alias = models.SlugField(_('alias'))
     
-    meta_description = models.TextField(_('description'), blank = True, 
-                                     help_text = _('meta tag "description"'))
-    meta_keywords = models.TextField(_('keywords'), blank = True, 
-                                     help_text = _('meta tag "keywords"'))
-    meta_redirect = models.CharField(_('redirect'), max_length = 255, 
-                                     blank = True, help_text = _('http 302'))
+    meta_description = models.TextField(_('description'), blank = True, help_text = _('meta tag "description"'))
+    meta_keywords = models.TextField(_('keywords'), blank = True, help_text = _('meta tag "keywords"'))
+    meta_redirect = models.CharField(_('redirect'), max_length = 255,  blank = True, help_text = _('http 302'))
     active = models.BooleanField(_('active'), default=True)
     
     #поле необходимое для поиска
@@ -62,10 +59,21 @@ class Page(BasePage, NS_Node):
         if parents:
             for one in parents:
                 p += '/%s'%(one.alias)
+        if self.language != 'ru':
+            return "/%s%s/%s/" % (self.language, p, self.alias)
+        else:
+            return '%s/%s/' % (p, self.alias)
+        
+    def get_url(self):
+        parents = self.get_ancestors()
+        p = ''
+        if parents:
+            for one in parents:
+                p += '/%s'%(one.alias)
         return "/%s%s/%s/" % (self.language, p, self.alias)
         
     def save(self,*args,**kwargs):
-        self.url = self.get_absolute_url()
+        self.url = self.get_url()
         return super(Page,self).save(*args,**kwargs)
         
     class Meta:
@@ -74,6 +82,7 @@ class Page(BasePage, NS_Node):
         ordering = ('tree_id', 'depth')
         
 class NewsItem(BasePage):
+    anonce = models.TextField("Anounce", max_length = 2000, blank = True)
     created = models.DateTimeField(_("Creating date"), default = datetime.now)
     
     class Meta:
@@ -82,28 +91,56 @@ class NewsItem(BasePage):
         ordering = ('-created', )
         
     def get_absolute_url(self):
-        return "/%s/news/%s/" % (self.language, self.alias)
+        if self.language != 'ru':
+            return "/%s/news/%s/" % (self.language, self.alias)
+        else:
+            return "/news/%s/" % (self.alias)
         
-class BottomBlock(models.Model):
-    CH = (
-        ('copy', 'copy'),
-        ('address', 'address'),
-        ('phone', 'phone'),
-        ('news_left', 'Text on Left Side of News Page'),
-        ('news_right', 'Text on Right Side of News Page'),
-    )
-    
-    alias = models.SlugField(choices = CH)
-    language = models.CharField(max_length = 2, choices = settings.LANGUAGES)
-    text = models.TextField(_("Text"), blank = True)
+class NewsPageTexts(models.Model):
+    language = models.CharField(max_length = 2, choices = settings.LANGUAGES, unique = True)
+    text_left = models.TextField(_("Text On Left"), blank = True)
+    text_right = models.TextField(_("Text On Right"), blank = True)
     
     def __unicode__(self):
-        return self.alias
+        return "Texts for language '%s'" % self.language
     
     class Meta:
-        verbose_name = _("text")
-        verbose_name_plural = _("texts")
-        unique_together = (("alias", "language"),)
+        verbose_name = _("news page texts")
+        verbose_name_plural = _("news page texts")
+        
+class FooterText(models.Model):
+    language = models.CharField(max_length = 2, choices = settings.LANGUAGES, unique = True)
+    text1 = models.TextField(_("Text 1"), blank = True)
+    text2 = models.TextField(_("Text 2"), blank = True)
+    text3 = models.TextField(_("Text 3"), blank = True)
+    text4 = models.TextField(_("Text 4"), blank = True)
+    
+    def __unicode__(self):
+        return "Footer for language '%s'" % self.language
+    
+    class Meta:
+        verbose_name = _("footer texts")
+        verbose_name_plural = _("footer texts")
+        
+class Metadata(models.Model):
+    LOCATIONS = (
+        ('main', 'Main Page'),
+    )
+    
+    language = models.CharField(max_length = 2, choices = settings.LANGUAGES, default = 'ru')
+    location = models.CharField(_("Location"), unique = True, choices = LOCATIONS, max_length = 30)
+    title = models.CharField(max_length = 1000,verbose_name = u'Title',blank=True,help_text=u'Тег title')
+    
+    meta_description = models.TextField(verbose_name=u'Description',blank=True,help_text=u'Мета тег description')
+    meta_keywords = models.TextField(verbose_name=u'Keywords',blank=True,help_text=u'Мета тег keywords')
+    
+    def __unicode__(self):
+        return "%s %s" % (self.location, self.language)
+    
+    class Meta:
+        verbose_name = 'metadata'
+        verbose_name_plural = 'metadata'
+        unique_together = ('location', 'language')
         
 def page_deleted(sender, **kwargs):
     instance = kwargs['instance']

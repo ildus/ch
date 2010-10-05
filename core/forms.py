@@ -6,7 +6,7 @@ from django.contrib.admin.widgets import AdminTextInputWidget
 from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
 
-from core.models import BasePage, Page
+from core.models import BasePage, Page, NewsItem
 
 class BasePageForm(forms.ModelForm):
     #def textarea(cols, rows):
@@ -32,3 +32,7 @@ class BasePageForm(forms.ModelForm):
 class PageForm(BasePageForm, MoveNodeForm):
     class Meta:
         model = Page
+        
+class NewsForm(BasePageForm):
+    class Meta:
+        model = NewsItem

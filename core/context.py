@@ -16,20 +16,19 @@ def pages(request):
         except:
             pass
         
+    try:
+        footer = models.FooterText.objects.get(language = language)
+    except:
+        footer = None
+        
+    try:
+        news_text = models.NewsPageTexts.objects.get(language = language)
+    except:
+        news_text = None
+        
     data = {
         'main_pages': main_pages,
-    }
-        
-    fields = ('phone', 'address', 'copy', 'news_left', 'news_right')
-    for one in fields:
-        try:
-            kwargs = {
-                'alias': one,
-                'language': language,
-            }
-            data[one] = models.BottomBlock.objects.get(**kwargs)
-        except:
-            pass
-        
+        'footer': footer,
+        'news_text': news_text,
+    }    
     return data
-    
