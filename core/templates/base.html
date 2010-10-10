@@ -15,12 +15,12 @@
     </title>
     {% block keywords %}
     {% if metadata %}
-        <meta name="description" content="{{ metadata.meta_description }}">
-        <meta name="keywords" content="{{ metadata.meta_keywords }}">
+        <meta name="description" content="{{ metadata.meta_description }}" />
+        <meta name="keywords" content="{{ metadata.meta_keywords }}" />
     {% else %}
         {% if object %}
-        <meta name="description" content="{{ object.meta_description }}">
-        <meta name="keywords" content="{{ object.meta_keywords }}">
+        <meta name="description" content="{{ object.meta_description }}" />
+        <meta name="keywords" content="{{ object.meta_keywords }}" />
         {% endif %}
     {% endif %}
     
@@ -46,7 +46,7 @@
 	<div class="line">
 		<img src="{{MEDIA_URL}}images/spacer.gif" width="1" height="1" alt="" />
 	</div>
-		<br clear="all">
+		<br clear="all"/>
 		<div class="footer3">
 			<table width="1000px">
 				<tr>
