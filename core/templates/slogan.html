@@ -1,7 +1,7 @@
 <div class="slogan">
 	<a href="/">ChToRu.com</a><br />
 	C h i n a&nbsp;&nbsp;&nbsp;t o&nbsp;&nbsp;&nbsp;R u s s i a<br />&nbsp;<br />
-	<form action="/i18n/setlang/" method="POST" id="flang">
+	<form action="/i18n/setlang/" id="flang" method="POST">
 	{% csrf_token %}
 	<input type="hidden" value="ru" name="language" id="language" />
 	<input type="hidden" value="/" name="next" id="next" />
