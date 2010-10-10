@@ -3,20 +3,23 @@
 	C h i n a&nbsp;&nbsp;&nbsp;t o&nbsp;&nbsp;&nbsp;R u s s i a<br />&nbsp;<br />
 	<form action="/i18n/setlang/" method="POST" id="flang">
 	{% csrf_token %}
-	<input type="hidden" value="ru" name="language" id="language">
-	<input type="hidden" value="/ru/" name="next" id="next">
+	<input type="hidden" value="ru" name="language" id="language" />
+	<input type="hidden" value="/" name="next" id="next" />
 	<a class="lang" lang="ru"> ru <img src="{{MEDIA_URL}}/images/flag_ru.gif" width="16" height="11" alt="русский" />&nbsp;&nbsp;&nbsp; </a>
 	<a class="lang" lang="zh"> cn <img src="{{MEDIA_URL}}/images/flag_cn.gif" width="16" height="11" alt="chinese" />&nbsp;&nbsp;&nbsp; </a>
 	<a class="lang" lang="en"> en <img src="{{MEDIA_URL}}/images/flag_en.gif" width="16" height="11" alt="english" /> </a>
 	</form>
 </div>
-<script>
+<script type="text/javascript">
 	dojo.addOnLoad(function () {
 		dojo.query('.lang').onclick(function (e) {
 			e.preventDefault();
 			lang = dojo.attr(this, 'lang');
 			dojo.byId('language').value = lang;
-			dojo.byId('next').value = '/'+lang+'/';
+			if (lang == 'ru')
+				dojo.byId('next').value = '/';
+			else
+				dojo.byId('next').value = '/'+lang+'/';
 			dojo.byId('flang').submit();
 		});
 	});

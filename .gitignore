@@ -4,6 +4,8 @@
 .metadata
 .pydevproject
 .settings
+local_settings.py
+migrations
 local_urls.py
 pip-log.txt
 *.*~
